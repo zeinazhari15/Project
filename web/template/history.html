@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>History Submissions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen">
+  <header class="bg-white shadow">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="text-lg font-bold">M. ZEIN AZHARI</div>
+      <nav class="space-x-4">
+        <a href="/" class="text-gray-600 hover:text-indigo-600">Beranda</a>
+        <a href="/news" class="text-gray-600 hover:text-indigo-600">Kabar Terbaru</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto p-6">
+    <h1 class="text-2xl font-bold mb-4">History Submissions</h1>
+
+    <div class="bg-white rounded shadow p-4">
+      <table class="w-full text-left table-auto">
+        <thead>
+          <tr class="border-b">
+            <th class="py-2">#</th>
+            <th class="py-2">Username</th>
+            <th class="py-2">Email</th>
+            <th class="py-2">Created At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{range .Submissions}}
+          <tr class="border-b">
+            <td class="py-2">{{.ID}}</td>
+            <td class="py-2">{{.Username}}</td>
+            <td class="py-2">{{.Email}}</td>
+            <td class="py-2">{{.CreatedAt}}</td>
+          </tr>
+          {{else}}
+          <tr>
+            <td colspan="4" class="py-4 text-center text-gray-500">No submissions yet.</td>
+          </tr>
+          {{end}}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-6">
+      <a href="/" class="px-4 py-2 bg-indigo-600 text-white rounded">Home</a>
+    </div>
+  </main>
+</body>
+</html>

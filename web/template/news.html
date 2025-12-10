@@ -1,158 +1,140 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kabar Terbaru - [Nama Anda]</title>
-    <!-- Memuat Tailwind CSS dari CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Menggunakan font Inter untuk tampilan modern -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7; /* Latar belakang abu-abu muda */
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kabar Terbaru — Zein Azhari</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-50 min-h-screen">
 
-    <!-- Header / Navigasi (Top Bar) -->
-    <header class="bg-white shadow-md sticky top-0 z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Logo/Nama -->
-            <a href="#" class="text-xl font-bold text-gray-800 tracking-wider">M. ZEIN AZHARI</a>
-            
-            <!-- Navigasi -->
-            <nav class="space-x-6 hidden sm:flex">
-                <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-150">Beranda</a>
-                <a href="#" class="text-gray-600 hover:text-indigo-600 transition duration-150">Tentang</a>
-                <a href="#" class="text-indigo-600 font-semibold border-b-2 border-indigo-600">Kabar Terbaru</a>
-                <a href="/" class="text-gray-600 hover:text-indigo-600 transition duration-150">Home</a>
-            </nav>
-            
-            <!-- Menu Mobile (Placeholder) -->
-            <button class="sm:hidden text-gray-600 hover:text-indigo-600">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </div>
-    </header>
+  <header class="bg-white shadow">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="text-lg font-bold">M. ZEIN AZHARI</div>
+      <nav class="space-x-4">
+        <a href="/" class="text-gray-600 hover:text-indigo-600" id="berandaButton">Beranda</a>
+        <a href="/dashboard" class="text-gray-600 hover:text-indigo-600" id="dashboardButton">Dashboard</a>
+        <a href="/news" class="text-indigo-600 font-semibold" id="newsButton">Kabar Terbaru</a>
+        <a href="/history" class="text-gray-600 hover:text-indigo-600" id="historyButton">History</a>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Konten Utama Halaman Kabar Terbaru -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Judul Halaman (Hero Section) -->
-        <div class="text-center mb-12">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
-                Perjalanan & Kabar Terbaru
-            </h1>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto">
-                Catatan mengenai proyek terbaru, pencapaian profesional, dan pemikiran pribadi.
-            </p>
+  <main class="max-w-5xl mx-auto p-6">
+    <section class="bg-white rounded-lg shadow p-6 mb-6">
+      <h1 class="text-2xl font-bold mb-2">Tentang Saya</h1>
+      <p class="text-gray-600">
+        Halo — saya Zein Azhari, QA Engineer fokus pada automation testing (Selenium & Appium). Di halaman ini kamu bisa berlangganan kabar terbaru.
+      </p>
+    </section>
+
+    <section class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-semibold mb-4">Berlangganan Kabar</h2>
+
+      <!-- pesan error global -->
+      <div id="globalMsg" class="hidden mb-4 p-3 rounded text-sm"></div>
+
+      <form id="newsForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Username</label>
+          <input id="username" name="username" type="text" class="mt-1 block w-full border rounded px-3 py-2" placeholder="Masukkan username">
+          <p id="errUser" class="text-red-600 text-sm mt-1 hidden"></p>
         </div>
 
-        <!-- Filter dan Search Bar -->
-        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0">
-            <!-- Filter Kategori -->
-            <div class="flex space-x-2">
-                <button class="px-4 py-2 text-sm font-medium rounded-full bg-indigo-600 text-white shadow-md hover:bg-indigo-700 transition duration-150">Semua</button>
-                <button class="px-4 py-2 text-sm font-medium rounded-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 transition duration-150">Karier QA</button>
-                <button class="px-4 py-2 text-sm font-medium rounded-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 transition duration-150">Proyek Pribadi</button>
-                <button class="px-4 py-2 text-sm font-medium rounded-full bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 transition duration-150">Pemikiran</button>
-            </div>
-            
-            <!-- Search Bar -->
-            <input type="text" placeholder="Cari kabar..." class="px-4 py-2 w-full sm:w-64 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Email</label>
+          <input id="email" name="email" type="email" class="mt-1 block w-full border rounded px-3 py-2" placeholder="Masukkan email">
+          <p id="errEmail" class="text-red-600 text-sm mt-1 hidden"></p>
         </div>
 
-        <!-- Grid Konten Berita/Update -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <!-- Card Berita 1: Pencapaian Karier -->
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
-                <!-- Placeholder Gambar -->
-                <div class="bg-indigo-100 h-48 w-full flex items-center justify-center text-indigo-600 font-semibold text-lg">
-                    [Gambar Pencapaian]
-                </div>
-                <div class="p-6">
-                    <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Karier QA - 15 Mei 2025</span>
-                    <h2 class="mt-2 text-xl font-bold text-gray-900 line-clamp-2">
-                        Berhasil Menyelesaikan Tes QA Teknis di [Nama Perusahaan]
-                    </h2>
-                    <p class="mt-3 text-gray-600 line-clamp-3">
-                        Saya senang berbagi kabar bahwa saya berhasil melewati serangkaian tes teknis QA yang menantang, termasuk pembuatan test case komprehensif untuk fitur pembayaran.
-                    </p>
-                    <a href="#" class="mt-4 inline-block text-indigo-600 font-medium hover:text-indigo-800">Baca Selengkapnya &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Card Berita 2: Proyek Teknologi -->
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
-                <!-- Placeholder Gambar -->
-                <div class="bg-green-100 h-48 w-full flex items-center justify-center text-green-600 font-semibold text-lg">
-                    [Gambar Proyek]
-                </div>
-                <div class="p-6">
-                    <span class="text-xs font-semibold text-green-600 uppercase tracking-wider">Proyek Pribadi - 01 Mei 2025</span>
-                    <h2 class="mt-2 text-xl font-bold text-gray-900 line-clamp-2">
-                        Peluncuran Aplikasi Kalkulator BMI Sederhana (React/Angular)
-                    </h2>
-                    <p class="mt-3 text-gray-600 line-clamp-3">
-                        Project sampingan saya baru saja selesai. Ini adalah aplikasi kalkulator BMI sederhana yang dibangun menggunakan React/Angular dan didesain responsif.
-                    </p>
-                    <a href="#" class="mt-4 inline-block text-green-600 font-medium hover:text-green-800">Lihat Demo &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Card Berita 3: Pemikiran/Artikel -->
-            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 overflow-hidden">
-                <!-- Placeholder Gambar -->
-                <div class="bg-yellow-100 h-48 w-full flex items-center justify-center text-yellow-700 font-semibold text-lg">
-                    [Gambar Artikel]
-                </div>
-                <div class="p-6">
-                    <span class="text-xs font-semibold text-yellow-700 uppercase tracking-wider">Pemikiran - 20 April 2025</span>
-                    <h2 class="mt-2 text-xl font-bold text-gray-900 line-clamp-2">
-                        Pentingnya Negatif Testing dalam Siklus Pengembangan Perangkat Lunak
-                    </h2>
-                    <p class="mt-3 text-gray-600 line-clamp-3">
-                        Sebuah artikel singkat yang membahas mengapa pengujian kasus negatif (negative testing) sama pentingnya dengan pengujian kasus positif.
-                    </p>
-                    <a href="#" class="mt-4 inline-block text-yellow-700 font-medium hover:text-yellow-900">Baca Artikel &rarr;</a>
-                </div>
-            </div>
-            
-            <!-- Tambahkan lebih banyak card di sini... -->
-            
+        <div class="flex items-center gap-3">
+          <button id="submitBtn" type="button" class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Submit</button>
+          <a href="/" class="px-4 py-2 border rounded">Kembali ke Home</a>
         </div>
+      </form>
+    </section>
+  </main>
 
-        <!-- Paginasi (Halaman Berikutnya) -->
-        <div class="mt-12 flex justify-center">
-            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                    <span class="sr-only">Previous</span>
-                    <!-- Icon Chevron Kiri -->
-                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 010 1.06L9.46 10l3.33 3.71a.75.75 0 11-1.06 1.06l-4-4.5a.75.75 0 010-1.06l4-4.5a.75.75 0 011.06 0z" clip-rule="evenodd" /></svg>
-                </a>
-                <a href="#" aria-current="page" class="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">1</a>
-                <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
-                <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 hidden md:inline-flex relative items-center px-4 py-2 border text-sm font-medium">3</a>
-                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                    <span class="sr-only">Next</span>
-                    <!-- Icon Chevron Kanan -->
-                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 010-1.06L10.54 10 7.21 6.29a.75.75 0 111.06-1.06l4 4.5a.75.75 0 010 1.06l-4 4.5a.75.75 0 01-1.06 0z" clip-rule="evenodd" /></svg>
-                </a>
-            </nav>
-        </div>
+  <!-- Modal Success -->
+  <div id="successModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-lg p-6 max-w-sm w-full text-center">
+      <h3 class="text-lg font-semibold mb-2">Berhasil!</h3>
+      <p class="text-gray-600 mb-4">Terima kasih — data kamu sudah tersimpan.</p>
+      <button id="closeModal" class="px-4 py-2 bg-indigo-600 text-white rounded">Tutup</button>
+    </div>
+  </div>
 
-    </main>
+  <script>
+    const form = document.getElementById('newsForm');
+    const btn = document.getElementById('submitBtn');
+    const errUser = document.getElementById('errUser');
+    const errEmail = document.getElementById('errEmail');
+    const globalMsg = document.getElementById('globalMsg');
+    const modal = document.getElementById('successModal');
+    const closeModal = document.getElementById('closeModal');
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 mt-12">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-gray-400 text-sm">&copy; 2025 M. Zein Azhari. Hak Cipta Dilindungi.</p>
-        </div>
-    </footer>
+    function showError(el, text) {
+      el.textContent = text;
+      el.classList.remove('hidden');
+    }
+    function clearError(el) {
+      el.textContent = '';
+      el.classList.add('hidden');
+    }
+
+    btn.addEventListener('click', async () => {
+      // clear
+      clearError(errUser); clearError(errEmail);
+      globalMsg.classList.add('hidden');
+
+      const username = document.getElementById('username').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      // validation: both required
+      let ok = true;
+      if (!username) { showError(errUser, 'Username harus diisi'); ok = false; }
+      if (!email) { showError(errEmail, 'Email harus diisi'); ok = false; }
+
+      if (!ok) return;
+
+      // send via fetch (AJAX)
+      btn.disabled = true;
+      btn.textContent = 'Mengirim...';
+
+      try {
+        const res = await fetch('/submit-news', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email })
+        });
+
+        if (!res.ok) {
+          const text = await res.text();
+          globalMsg.textContent = 'Terjadi kesalahan: ' + text;
+          globalMsg.className = 'mb-4 p-3 rounded text-sm text-red-700 bg-red-100';
+          globalMsg.classList.remove('hidden');
+        } else {
+          // show success modal
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          // clear form
+          form.reset();
+        }
+      } catch (e) {
+        globalMsg.textContent = 'Network error: ' + e.message;
+        globalMsg.className = 'mb-4 p-3 rounded text-sm text-red-700 bg-red-100';
+        globalMsg.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Submit';
+      }
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+  </script>
 
 </body>
 </html>
